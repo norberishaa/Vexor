@@ -1,0 +1,75 @@
+body{
+    padding: 0;
+    margin: 0;
+}
+
+.nav-bar{
+    background-color: black;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    height: 75px;
+}
+
+.nav-bar .nav-logo-container{
+    display: flex;
+    width: 10%;
+    justify-content: center;
+    align-items: center;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: white;
+}
+
+.nav-bar .nav-logo-container .nav-logo{
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.nav-bar .nav-links{
+    width: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.nav-bar .nav-links a{
+    padding: 5px 10px;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.nav-bar .nav-links a:hover{
+    background-color: white;
+    color: black;
+    transition: .2s;
+    border-radius: 5px;
+}
+
+.landing{
+    background-color: rgb(19, 19, 19);
+    height: calc(100vh - 75px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.landing .landing-text{
+    color: white;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    letter-spacing: 3px;
+    font-weight: bold;
+    font-size: 3rem;
+}
+
+.landing .landing-text span{
+    text-decoration: underline;
+}
+
+.landing .landing-description{
+    color: white;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: ;
+}
