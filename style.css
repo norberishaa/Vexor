@@ -1,75 +1,149 @@
 body{
     padding: 0;
     margin: 0;
+    background-color: black;
+    font-family: 'PPTelegraf';
 }
 
 .nav-bar{
-    background-color: black;
+    background-color: white;
     display: flex;
     justify-content: space-around;
+    height: 120px;
+    align-items: center;
+    position: fixed;    /* qendron ne maje te faqes */
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 75px;
+    z-index: 9999;
 }
 
 .nav-bar .nav-logo-container{
     display: flex;
-    width: 10%;
-    justify-content: center;
     align-items: center;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    color: white;
+    justify-content: center;
+    width: 10%;
+    height: 90%;
 }
 
-.nav-bar .nav-logo-container .nav-logo{
-    font-weight: bold;
-    font-size: 1.5rem;
+.nav-bar .nav-logo-container #nav-logo{
+    pointer-events: none;   /* ndalon ruajtjen e fotografise */
+    width: 100%;
 }
 
 .nav-bar .nav-links{
     width: 25%;
     display: flex;
-    align-items: center;
     justify-content: space-around;
 }
 
 .nav-bar .nav-links a{
-    padding: 5px 10px;
-    text-align: center;
-    color: white;
+    color: black;
     text-decoration: none;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 1.2rem;
 }
 
 .nav-bar .nav-links a:hover{
-    background-color: white;
-    color: black;
+    color: grey;
     transition: .2s;
-    border-radius: 5px;
 }
 
-.landing{
-    background-color: rgb(19, 19, 19);
-    height: calc(100vh - 75px);
+.home-landing{
+    background-image: url(images/background.png);
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    min-width: 100%;
+    box-sizing: border-box;
 }
 
-.landing .landing-text{
+.home-landing .home-landing-main{
+    width: 100%;
+    height: 50%;
+    margin-top: auto;
+    margin-bottom: auto;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.home-landing .home-landing-main .main-left{
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    gap: 20px;
+}
+
+.home-landing .home-landing-main .main-left #vexor-white{
+    pointer-events: none;
+    width: 300px;
+}
+
+.home-landing .home-landing-main .main-left p{
     color: white;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    letter-spacing: 3px;
-    font-weight: bold;
-    font-size: 3rem;
+    font-size: 1.2rem;
+    line-height: 1.5;
 }
 
-.landing .landing-text span{
-    text-decoration: underline;
+.home-landing .home-landing-main .main-left #discover-more{
+    width: 50%;
+    height: 50px;
+    background: white;
+    border: 2px solid white;
+    color: black;
+    border-radius: 10px;
+    font-family: 'Jersey-20';
+    font-size: 1.5rem;
 }
 
-.landing .landing-description{
+.home-landing .home-landing-main .main-left #discover-more:hover{
+    background-color: transparent;
     color: white;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-weight: ;
+    cursor: pointer;
+}
+
+.home-landing .home-landing-main .main-right{
+    position: relative;
+    width: 400px;
+    height: 400px;
+}
+
+.home-landing .home-landing-main .main-right img{
+    position: absolute; /* stacked  */
+    width: 100%;
+    height: auto;
+    transition: opacity 0.3s ease;
+}
+
+.home-landing .home-landing-main .main-right #globe-black {
+    opacity: 0;
+}
+
+.home-landing .home-landing-main .main-right #globe-black:hover {
+    opacity: 1;
+}
+
+.home-landing .home-landing-main .main-right #globe-white:hover {
+    opacity: 0;
+}
+
+.home-landing .home-landing-partners{
+    background-color: whitesmoke;
+    bottom: 0;
+    height: 100px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.home-landing .home-landing-partners img{
+    width: 75px;
+    height: 75px;
+    transition: 0.2s ease;
+}
+
+.home-landing .home-landing-partners img:hover{
+    transform: scale(1.1);
+    cursor: pointer;
 }

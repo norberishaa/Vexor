@@ -1,0 +1,46 @@
+@font-face {
+    font-family: "PPTelegraf";
+    src: url("fonts/PPTelegraf/PPTelegraf-Ultralight.otf") format("opentype");
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "PPTelegraf";
+    src: url("fonts/PPTelegraf/PPTelegraf-UltralightSlanted.otf") format("opentype");
+    font-weight: 300;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "PPTelegraf";
+    src: url("fonts/PPTelegraf/PPTelegraf-Regular.otf") format("opentype");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "PPTelegraf";
+    src: url("fonts/PPTelegraf/PPTelegraf-RegularSlanted.otf") format("opentype");
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "PPTelegraf";
+    src: url("fonts/PPTelegraf/PPTelegraf-Ultrabold.otf") format("opentype");
+    font-weight: 800;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "PPTelegraf";
+    src: url("fonts/PPTelegraf/PPTelegraf-UltraboldSlanted.otf") format("opentype");
+    font-weight: 800;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Jersey-20";
+    src: url(fonts/jersey-20_5.2.8/jersey-20-latin-400-normal.ttf);
+}
