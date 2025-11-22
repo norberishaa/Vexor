@@ -2,6 +2,11 @@
     --nav-height: 120px; 
 }
 
+::selection{
+    background-color: whitesmoke;
+    color: black;
+}
+
 
 html{
     scroll-behavior: smooth;
@@ -10,11 +15,10 @@ html{
 body{
     padding: 0;
     margin: 0;
-    background-color: black;
+    background-color: whitesmoke;
     font-family: 'PPTelegraf';
 }
 
-/* ... Navigation styles remain unchanged ... */
 .nav-bar{
     background-color: white;
     display: flex;
@@ -61,12 +65,11 @@ body{
 
 .home-landing{
     background-image: url(images/background.png);
-    background-size: cover;      /* Ensures image covers the whole area */
-    background-position: center; /* Centers the image */
+    background-size: cover;
+    background-position: center;
     background-repeat: no-repeat;
     display: flex;
     flex-direction: column;
-    /* justify-content is no longer needed because we use flex-grow on the main child */
     align-items: center;
     height: 100vh;
     min-width: 100%;
@@ -168,24 +171,99 @@ body{
 
 .home-about-us{
     height: calc(100vh - var(--nav-height));
-    background-color: red;
+    width: 100%;
+    background-size: 150px 150px;
+    background-image: linear-gradient(to right, #dadada 1px, transparent 1px), linear-gradient(to bottom, #dadada 1px, transparent 1px);
+    position: relative;
+    overflow: hidden;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    gap: 5%;
     flex-direction: column;
 }
 
-.home-about-us .about-us-content{
+.home-about-us .corner-globe{
+    width: 40%;
+    position: absolute;
+    right: -5%;
+    animation: spin 120s linear infinite;
+    z-index: 1;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.home-about-us .about-us-container{
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
-    background-color: blue;
+    justify-content: flex-start;
+    gap: 25px;
+    align-items: center;
+    height: 90%;
     width: 75%;
-    height: 100vh;
+    z-index: 2;
+
 }
 
-.home-about-us .about-us-content h1{
+.home-about-us .about-us-container .about-us-title{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(31, 31, 31, .8);
+    backdrop-filter: blur(10px);
+    color: white;
+    height: 20%;
+    width: 100%;
+    font-family: 'Jersey-20';
+    font-weight: bold;
     font-size: 3rem;
-    padding: 0;
-    margin: 0;
+    border-radius: 25px;
+}
+
+.home-about-us .about-us-container .cards-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.home-about-us .about-us-container .cards-container .card{
+    color: white;
+    background-color: rgba(31, 31, 31, .8);
+    backdrop-filter: blur(10px);
+    height: 100%;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    border-radius: 25px;
+    overflow: hidden;
+    transition: .2s all;
+}
+
+.home-about-us .about-us-container .cards-container .card:hover{
+    transform: translateY(-10px);
+}
+
+.home-about-us .about-us-container .cards-container .card .card-title{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    font-family: 'Jersey-20';
+    height: 20%;
+}
+
+.home-about-us .about-us-container .cards-container .card .card-content{
+    padding: 0px 50px 0px 50px;
+    line-height: 175%;
+    font-weight: 200;
+    font-size: 1.2rem;
 }
