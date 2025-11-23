@@ -1,0 +1,69 @@
+ZeroLogon
+CVE: CVE-2020-1472
+Date: 2020-08-17
+Severity: 10/10
+Status: Patched
+Description: ZeroLogon is a critical vulnerability in Microsoft Active Directory Domain Controllers that allows an attacker to exploit a flaw in the Netlogon protocol. By sending specially crafted messages, an attacker can gain domain admin privileges with almost no effort and no authentication. Because it completely breaks the trust mechanism between domain members and controllers, it became one of the most dangerous Windows vulnerabilities ever disclosed.
+
+Log4Shell
+CVE: CVE-2021-44228
+Date: 2021-12-10
+Severity: 10/10
+Status: Patched
+Description: Log4Shell is a remote code execution vulnerability in Apache Log4j, a widely used Java logging library. It allows attackers to trigger code execution simply by forcing the application to log a malicious string. The ease of exploitation and near-universal impact across enterprise software made it one of the most severe, far-reaching vulnerabilities in modern history. Many systems were vulnerable without administrators even knowing Log4j was present.
+
+ICMAD
+CVE: CVE-2022-22536
+Date: 2022-02-09
+Severity: 10/10
+Status: Patched
+Description: ICMAD affects SAP products through a flaw in the Internet Communication Manager (ICM). Attackers can perform request smuggling and request concatenation, allowing them to bypass security controls, take over sessions, or gain access to sensitive internal systems. Because SAP systems often hold critical business, financial, and operational data, exploitation can lead to major business disruption. The vulnerability requires urgent patching due to the wide deployment of SAP in enterprise environments.
+
+ProxyLogon
+CVE: CVE-2021-26855
+Date: 2021-03-02
+Severity: 9.8/10
+Status: Patched
+Description: ProxyLogon is a server-side request forgery (SSRF) vulnerability in Microsoft Exchange Server. When combined with related vulnerabilities, it enables unauthenticated attackers to execute commands, dump mailboxes, or deploy web shells. It was heavily exploited in the wild by multiple threat actors shortly after disclosure. Because many organizations run Exchange on-premise, the attack surface was massive and the exploitation wave caused global compromise of email systems.
+
+Spring4Shell
+CVE: CVE-2022-22965
+Date: 2022-04-01
+Severity: 9.8/10
+Status: Patched
+Description: Spring4Shell is a remote code execution flaw affecting the Spring Framework, a major Java development platform. Under specific conditions, attackers can manipulate class binding to write arbitrary files and gain control of the application. The vulnerability drew comparisons to Log4Shell due to the popularity of Spring, but its real-world impact was somewhat lower because it required certain configurations. Still, it remained a serious threat for exposed Java applications.
+
+Atlassian Confluence RCE
+CVE: CVE-2022-26134
+Date: 2022-06-02
+Severity: 9.8/10
+Status: Patched
+Description: This critical vulnerability allows unauthenticated remote code execution in Atlassian Confluence Server and Data Center. It was actively exploited before a patch was released, with attackers deploying web shells and crypto-miners on compromised instances. Because Confluence often stores internal documentation, credentials, and sensitive knowledge bases, successful exploitation can lead to full environment compromise. Atlassian urged immediate patching due to ongoing attacks.
+
+VMware vSphere (vCenter)
+CVE: CVE-2021-21972
+Date: 2021-02-23
+Severity: 9.8/10
+Status: Patched
+Description: A remote code execution vulnerability in VMware vCenter’s Virtual SAN plugin, accessible via port 443. It allows unauthenticated attackers to execute commands as root. vCenter manages virtualized infrastructure, so compromising it can lead to full control over an organization’s servers and workloads. The vulnerability was so critical that VMware issued emergency patches and security warnings urging immediate action due to the potential for catastrophic impact.
+
+Google Chrome Zero-Day
+CVE: CVE-2022-0609
+Date: 2022-02-14
+Severity: High
+Status: Patched
+Description: This Chrome zero-day is a use-after-free vulnerability in Chrome’s Animation component. It was exploited in the wild by state-backed actors to run arbitrary code and escape the browser sandbox. Because browsers are a primary attack surface, zero-days like this are dangerous—users can be compromised simply by visiting a malicious webpage. Google released rapid updates and urged immediate installation across all platforms.
+
+Follina
+CVE: CVE-2022-30190
+Date: 2022-06-01
+Severity: ~8.0/10
+Status: Patched
+Description: Follina is an RCE vulnerability in the Microsoft Windows Support Diagnostic Tool (MSDT). Attackers can exploit it via malicious Word documents that trigger MSDT without macros, bypassing many traditional security controls. It was actively exploited by phishing campaigns, making it particularly dangerous for everyday users. The flaw allowed remote command execution with minimal user interaction and gained widespread attention due to its simplicity and impact.
+
+PetitPotam
+CVE: CVE-2021-36942
+Date: 2021-07-20
+Severity: 7.5/10
+Status: Patched
+Description: PetitPotam is an NTLM relay attack vector targeting Windows domain environments. By abusing the MS-EFSRPC API, attackers can force domain controllers to authenticate to malicious servers, enabling credential relay attacks. It became a popular technique for attackers seeking domain compromise, especially when paired with other Active Directory weaknesses. Microsoft released mitigations and guidance to harden environments against NTLM relay abuse.

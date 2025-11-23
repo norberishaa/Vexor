@@ -12,6 +12,10 @@ html{
     scroll-behavior: smooth;
 }
 
+html::-webkit-scrollbar {
+  display: none;
+}
+
 body{
     padding: 0;
     margin: 0;
@@ -47,8 +51,9 @@ body{
 }
 
 .nav-bar .nav-links{
-    width: 25%;
+    width: 30%;
     display: flex;
+    align-items: center;
     justify-content: space-around;
 }
 
@@ -63,6 +68,22 @@ body{
     transition: .2s;
 }
 
+.nav-bar .nav-links .log-in{
+    color: white;
+    width: 100px;
+    height: 30px;
+    background-color: black;
+    border: 2px solid black;
+    border-radius: 10px;
+    transition: .2s;
+}
+
+.nav-bar .nav-links .log-in:hover{
+    background-color: white;
+    color: black;
+    cursor: pointer;
+}
+
 .home-landing{
     background-image: url(images/background.png);
     background-size: cover;
@@ -71,10 +92,11 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100vh;
+    height: calc(100vh - var(--nav-height));
     min-width: 100%;
     box-sizing: border-box;
-    padding-top: var(--nav-height); 
+    margin-top: var(--nav-height);
+    scroll-margin-top: var(--nav-height);
 }
 
 .home-landing .home-landing-main{
@@ -396,4 +418,190 @@ body{
     color: white;
     border: white solid 1px;
     transform: scale(1.1);
+}
+
+/* -------------------- DASHBOARD -------------------- */
+
+.dashboard{
+    height: calc(100vh - var(--nav-height));
+    margin-top: var(--nav-height);
+    width: 100%;
+    background-color: black;
+    background-size: 150px 150px;
+    background-image: linear-gradient(to right, #333333 1px, transparent 1px), linear-gradient(to bottom, #333333 1px, transparent 1px);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    scroll-margin-top: var(--nav-height);
+    gap: 5%;
+}
+
+.dashboard .dashboard-overview{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 15%;
+    padding-top: 20px;
+}
+
+.dashboard .dashboard-overview .dashboard-overview-item{
+    background-color: rgba(34, 34, 34, .9);
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 15%;
+    border-radius: 15px;
+    color: white;
+    padding: 15px;
+    overflow: hidden;
+    transition: all .2s;
+}
+
+.dashboard .dashboard-overview .dashboard-overview-item:hover{
+    background-color: rgba(34, 34, 34, 1);
+}
+
+.dashboard .dashboard-overview .dashboard-overview-item .overview-item-content{
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.dashboard .dashboard-overview .dashboard-overview-item .green{
+    color: green;
+}
+
+.dashboard .dashboard-overview .dashboard-overview-item .red{
+    color: red;
+}
+
+.dashboard .dashboard-overview .dashboard-overview-item .yellow{
+    color: yellow;
+}
+
+.dashboard .dashboard-cve-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+}
+
+.dashboard .dashboard-cve-container .cve-table-container{
+    width: 60%;
+    max-height: 60%;
+    overflow-y: auto;
+    overflow-x: auto;
+    border-radius: 25px;
+}
+
+.dashboard .dashboard-cve-container .cve-table-container .table-head{
+    display: flex;
+    flex-direction: column;
+    height: 125px;
+    justify-content: space-evenly;
+    padding-left: 5%;
+    position: sticky;
+    top: 0;
+    background-color: white;
+}
+
+.dashboard .dashboard-cve-container .cve-table-container .table-head h1{
+    font-weight: 500;
+    font-size: 2.5rem;
+    margin: 0;
+}
+
+.dashboard .dashboard-cve-container .cve-table-container .table-head input{
+    width: 25%;
+    height: 30px;
+    padding: 5px;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+
+.dashboard .dashboard-cve-container .cve-table-container .table-head input:focus{
+    outline: none;
+}
+
+.dashboard .dashboard-cve-container .cve-table-container .cve-table{
+    width: 100%;
+    height: 100%;
+    border-collapse: collapse;
+    background-color: white;
+}
+
+.dashboard .dashboard-cve-container .cve-table-container .cve-table th{
+    height: 50px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    position: sticky;
+    top: 125px;
+    background-color: white;
+}
+
+.dashboard .dashboard-cve-container .cve-table-container .cve-table tr{
+    height: 35px;
+}
+
+.dashboard .dashboard-cve-container .cve-table-container .cve-table tr:hover{
+    cursor: pointer;
+    background-color: rgb(238, 238, 238);
+}
+
+.dashboard .dashboard-cve-container .cve-table-container .cve-table td{
+    font-weight: 400;
+}
+
+.dashboard .dashboard-cve-container .cve-table-container .cve-table th,
+.dashboard .dashboard-cve-container .cve-table-container .cve-table td{
+    border-bottom: solid black 1px;
+    text-align: left;
+    padding-left: 10px;
+}
+
+.dashboard .dashboard-cve-container .cve-table-container .table-head h1::selection,
+.dashboard .dashboard-cve-container .cve-table-container .table-head input::selection,
+.dashboard .dashboard-cve-container .cve-table-container .cve-table td::selection{
+    background-color: black;
+    color: white;
+}
+
+.dashboard .dashboard-cve-container .cve-description-container{
+    background-color: rgba(34, 34, 34, .9);
+    color: white;
+    width: 30%;
+    border-radius: 25px;
+    height: 50%;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 2%;
+}
+
+.dashboard .dashboard-cve-container .cve-description-container h1{
+    font-weight: 500;
+    font-size: 3rem;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.dashboard .dashboard-cve-container .cve-description-container .short-description{
+    display: flex;
+    justify-content: space-between;
+}
+
+.dashboard .dashboard-cve-container .cve-description-container .short-description h2{
+    font-weight: 100;
+    margin: 0;
+}
+
+.dashboard .dashboard-cve-container .cve-description-container p{
+    font-weight: 200;
+    line-height: 150%;
+    font-size: 1.2rem;
+    text-align: justify;
 }
