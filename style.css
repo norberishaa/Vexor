@@ -77,6 +77,9 @@ body{
     border-radius: 10px;
     transition: .2s;
     font-size: 1.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .nav-bar .nav-links .log-in:hover{
@@ -773,6 +776,11 @@ body{
 
 .sign-up-section .sign-up-container .sign-up-top .checkbox input{
     width: 15px;
+}
+
+.sign-up-section .sign-up-container .sign-up-top input::selection{
+    background-color: black;
+    color: white;
 }
 
 .sign-up-section .sign-up-container .sign-up-bottom{
