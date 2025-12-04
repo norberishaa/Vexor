@@ -807,3 +807,46 @@ body{
     color: black;
     cursor: pointer;
 }
+
+/* --------------------------   ENGJELLI   -------------------------- */
+
+.news{
+    width: 100%;
+    margin-top: var(--nav-height); /*e shtyn posht navbarit */
+    height: calc(100vh - var(--nav-height)); /* viewport height minus lartesia e navbarit */
+    display: flex;
+    justify-content: center;
+    align-items: centerr;
+    background: url(images/background.png);
+}
+
+.news .news-container{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    overflow-x: hidden;
+    overflow-y: auto;
+    gap: 5%;
+}
+
+.news .news-container .news-item-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: rgba(255, 255, 255, .8);
+    height: 25%;
+    width: 25%;
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.news .news-container .news-item-container .titulli{
+    font-size: 2rem;
+    font-family: 'Jersey-20';
+    text-decoration: none;
+    color: black;} 
+    
+.news .news-container  .news-item-container .titulli:hover{ color: green; }
