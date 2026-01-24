@@ -10,18 +10,26 @@
 </head>
 <body>
     <nav class="nav-bar">
-        <div class="nav-logo-container">
-            <img src="/images//vexor_logo/vexor_black.svg" id="nav-logo">
-        </div>
+            <div class="nav-logo-container">
+                <a href="index.html"><img src="images/vexor_logo/vexor_black.svg" id="nav-logo" alt="Vexor Logo"></a>
+            </div>
+            
+            <!-- Hamburger Menu -->
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            
+            <div class="nav-links" id="navLinks">
+                <a href="index.html">Home</a>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="news.html">News</a>
+                <a href="contact.html">Contact</a>
+                <button class="log-in" onclick="location.href='log-in.html'">Log In</button>
+            </div>
+        </nav>
 
-        <div class="nav-links">
-            <a href="home.html">Home</a>
-            <a href="dashboard.html">Dashboard</a>
-            <a href="news.html">News</a>
-            <a href="contact.html">Contact</a>
-            <button class="log-in" onclick="location.href='log-in.html'">Log In</button>
-        </div>
-    </nav>
     <div class="news">
         <div class="news-container">
             <div class="news-item-container">
@@ -168,5 +176,7 @@
             </div>
         </div>
     </div>
+
+    <script src="js/script.js"></script>
 </body>
 </html>
