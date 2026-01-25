@@ -1,4 +1,5 @@
 <?php
+require_once "config/auth_check.php";
 require_once "config/db.php";
 
 $sql = "SELECT cve_id, name, status, severity, date_reported, description FROM cve_list ORDER BY severity DESC";
