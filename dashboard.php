@@ -1,10 +1,10 @@
 <?php
 require_once "config/db.php";
 
-$sql = "SELECT cve_id, name, status, severity, date_reported, description FROM cve_list ORDER BY date_reported DESC";
+$sql = "SELECT cve_id, name, status, severity, date_reported, description FROM cve_list ORDER BY severity DESC";
 $result = $conn->query($sql);
 
-$selectedCVE = null;
+$selectedCve = null;
 if (isset($_GET['cve'])) {
     $stmt = $conn->prepare("
         SELECT *
@@ -65,7 +65,7 @@ $stats = $conn->query($statsSql)->fetch_assoc();
     <div class="dashboard">
         <div class="dashboard-overview">
             <div class="dashboard-overview-item">
-                <div class="overview-item-title">Total Active CVE's</div>
+                <div class="overview-item-title">Total Tracked CVE's</div>
                 <div class="overview-item-content"><?= $stats['total'] ?></div>
             </div>
             <div class="dashboard-overview-item">
@@ -104,7 +104,7 @@ $stats = $conn->query($statsSql)->fetch_assoc();
                     <tbody>
                         <?php if ($result->num_rows > 0): ?>
                             <?php while ($row = $result->fetch_assoc()): ?>
-                                <tr data-cve="<?= htmlspecialchars($row['cve_id'], ENT_QUOTES) ?>">
+                                <tr data-cve="<?= htmlspecialchars($row['cve_id']) ?>">
                                     <td><?= htmlspecialchars($row['cve_id']) ?></td>
                                     <td><?= htmlspecialchars($row['name']) ?></td>
                                     <td><?= htmlspecialchars($row['status']) ?></td>
@@ -122,8 +122,9 @@ $stats = $conn->query($statsSql)->fetch_assoc();
                 </table>
             </div>
         </div>
+    </div>
 
-        <?php if ($selectedCve): ?>
+    <?php if ($selectedCve): ?>
             <div class="cve-description-wrapper active">
                 <div class="cve-description-container">
 
@@ -139,12 +140,11 @@ $stats = $conn->query($statsSql)->fetch_assoc();
                         <h2><?= htmlspecialchars($selectedCve['date_reported']) ?></h2>
                     </div>
 
-                    <p><?= nl2br(htmlspecialchars($selectedCve['description'])) ?></p>
+                    <p><?= htmlspecialchars($selectedCve['description']) ?></p>
 
                 </div>
             </div>
-        <?php endif; ?>
-    </div>
+    <?php endif; ?>
 
     <script src="js/script.js"></script>
 </body>

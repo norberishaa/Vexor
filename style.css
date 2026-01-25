@@ -607,23 +607,48 @@ body {
 	background-color: black;
 	color: white;
 }
-
-.dashboard .cve-description-wrapper{
+.cve-description-wrapper{
     position: absolute;
+    top: 0;
+    left: 0;
     justify-content: center;
     align-items: center;
     width: 100%;
     height: 100%;
     z-index: 9999;
-    backdrop-filter: blur(5px);
     display: none;
 }
 
-.dashboard .cve-description-wrapper.active{
+.cve-description-wrapper.active{
     display: flex;
+    animation: fadeInOverlay 0.4s ease forwards;
 }
 
-.dashboard .cve-description-container {
+.cve-description-wrapper.active .cve-description-container {
+    animation: slideUpModal 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes fadeInOverlay {
+    from { 
+        background-color: rgba(0, 0, 0, 0);
+    }
+    to { 
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+}
+
+@keyframes slideUpModal {
+    from { 
+        opacity: 0;
+        transform: translateY(30px) scale(0.9);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.cve-description-container {
 	background-color: rgba(34, 34, 34, 1);
 	color: white;
 	width: 30%;
@@ -635,24 +660,24 @@ body {
 	gap: 2%;
 }
 
-.dashboard .cve-description-container h1 {
+.cve-description-container h1 {
 	font-weight: 500;
 	font-size: 3rem;
 	margin-top: 0;
 	margin-bottom: 20px;
 }
 
-.dashboard .cve-description-container .short-description {
+.cve-description-container .short-description {
 	display: flex;
 	justify-content: space-between;
 }
 
-.dashboard .cve-description-container .short-description h2 {
+.cve-description-container .short-description h2 {
 	font-weight: 100;
 	margin: 0;
 }
 
-.dashboard .cve-description-container p {
+.cve-description-container p {
 	font-weight: 200;
 	line-height: 150%;
 	font-size: 1.2rem;
