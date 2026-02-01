@@ -1,63 +1,49 @@
 <?php
 session_start();
 require_once "config/db.php";
+require_once "classes/User.php";
+
+$user = new User($conn);
 
 $error = '';
 $success = '';
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $name = trim($_POST['name'] ?? '');
-    $last_name = trim($_POST['last_name'] ?? '');
+    $lastName = trim($_POST['last_name'] ?? '');
     $email = trim($_POST['email'] ?? '');
     $password = $_POST['password'] ?? '';
-    $confirm_password = $_POST['confirm_password'] ?? '';
+    $confirmPassword = $_POST['confirm_password'] ?? '';
     $terms = isset($_POST['terms']);
-    
-    // kontrollo per fields te zbrazta
-    if ($name === '' || $last_name === '' || $email === '' || $password === '' || $confirm_password === '') {
+
+    // Validation
+    if ($name === '' || $lastName === '' || $email === '' || $password === '' || $confirmPassword === '') {
         $error = "All fields are required";
-    }
-    elseif (!$terms) {
+    } elseif (!$terms) {
         $error = "You must agree to the terms of service";
-    }
-    // Validimi i email
-    elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $error = "Invalid email format";
-    }
-    // Kontrollo password
-    elseif ($password !== $confirm_password) {
+    } elseif ($password !== $confirmPassword) {
         $error = "Passwords do not match";
-    }
-    elseif (strlen($password) < 10) {
+    } elseif (strlen($password) < 10) {
         $error = "Password must be at least 10 characters";
+    } elseif ($user->emailExists($email)) {
+        $error = "Email already exists";
     }
-    // Kontrollo nese email ekziston
-    else {
-        $check = $conn->prepare("SELECT user_id FROM users WHERE email = ?");
-        $check->bind_param("s", $email);  // MySQLi binding
-        $check->execute();
-        $result = $check->get_result();
-        if ($result->fetch_assoc()) {
-            $error = "Email already exists";
-        }
-    }
-    
-    // nese nuk ka error inserto te dhenat
+
     if ($error === '') {
-        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-        $stmt = $conn->prepare("
-            INSERT INTO users (emri, mbiemri, email, password, admin)
-            VALUES (?, ?, ?, ?, 'no')
-        ");
-        $stmt->bind_param("ssss", $name, $last_name, $email, $hashed_password);
-        
-        if ($stmt->execute()) {
-            $_SESSION['user_id'] = $conn->insert_id;
-            $_SESSION['email'] = $email;
-            $_SESSION['name'] = $name;
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+        if ($user->create($name, $lastName, $email, $hashedPassword)) {
+            $newUser = $user->getByEmail($email);
+            $userData = $newUser->fetch_assoc();
+
+            $_SESSION['user_id'] = $userData['user_id'];
+            $_SESSION['email'] = $userData['email'];
+            $_SESSION['name'] = $userData['emri'];
+            $_SESSION['admin'] = $userData['admin'];
             $_SESSION['last_activity'] = time();
-            
-            // Redirect to dashboard
+
             header("Location: dashboard.php");
             exit();
         } else {
@@ -81,17 +67,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <div class="nav-logo-container">
             <a href="index.html"><img src="images/vexor_logo/vexor_black.svg" id="nav-logo" alt="Vexor Logo"></a>
         </div>
-        
         <div class="hamburger" id="hamburger">
             <span></span>
             <span></span>
             <span></span>
         </div>
-        
         <div class="nav-links" id="navLinks">
             <a href="index.html">Home</a>
             <a href="dashboard.php">Dashboard</a>
-            <a href="news.php">News</a>
+            <a href="news.html">News</a>
             <a href="contact.html">Contact</a>
             <button class="log-in" onclick="location.href='log-in.php'">Log In</button>
         </div>
@@ -100,13 +84,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <div class="sign-up-section">
         <form class="sign-up-container" action="sign-up.php" method="POST">
             <h1>Sign Up</h1>
+
             <?php if ($error): ?>
-                <div class="error-message" style="color: red"><?= htmlspecialchars($error) ?></div>
+                <div class="error-message"><?= htmlspecialchars($error) ?></div>
             <?php endif; ?>
-            
+
             <?php if ($success): ?>
                 <div class="success-message"><?= htmlspecialchars($success) ?></div>
             <?php endif; ?>
+
             <div class="sign-up-top">
                 <input type="text" name="name" placeholder="Name" value="<?= htmlspecialchars($_POST['name'] ?? '') ?>" required>
                 <input type="text" name="last_name" placeholder="Last Name" value="<?= htmlspecialchars($_POST['last_name'] ?? '') ?>" required>

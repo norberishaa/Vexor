@@ -56,7 +56,6 @@ if (wrapper) {
         window.location.href = 'dashboard.php';
     });
 
-    // prevent close when clicking inside
     const container = wrapper.querySelector('.cve-description-container');
     container.addEventListener('click', e => e.stopPropagation());
 }

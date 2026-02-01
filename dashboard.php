@@ -1,34 +1,20 @@
 <?php
 require_once "config/auth_check.php";
 require_once "config/db.php";
+require_once "classes/Cve.php";
 
-$sql = "SELECT cve_id, name, status, severity, date_reported, description FROM cve_list ORDER BY severity DESC";
-$result = $conn->query($sql);
+$cve = new Cve($conn);
+
+$result = $cve->getAll();
+$stats = $cve->getStats();
 
 $selectedCve = null;
 if (isset($_GET['cve'])) {
-    $stmt = $conn->prepare("
-        SELECT *
-        FROM cve_list
-        WHERE cve_id = ?
-        LIMIT 1
-    ");
-    $stmt->bind_param("s", $_GET['cve']);
-    $stmt->execute();
-    $selectedCve = $stmt->get_result()->fetch_assoc();
+    $selectedResult = $cve->getById($_GET['cve']);
+    if ($selectedResult->num_rows > 0) {
+        $selectedCve = $selectedResult->fetch_assoc();
+    }
 }
-
-$statsSql = "
-    SELECT
-        COUNT(*) AS total,
-        SUM(status != 'Patched') AS unpatched,
-        SUM(status = 'Patched') AS patched,
-        SUM(severity >= 8) AS high,
-        SUM(severity <= 7) AS medium
-    FROM cve_list
-";
-
-$stats = $conn->query($statsSql)->fetch_assoc();
 ?>
 
 <!DOCTYPE html>
@@ -36,8 +22,8 @@ $stats = $conn->query($statsSql)->fetch_assoc();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="fonts.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" type="image/x-icon" href="images/vexor_logo/vexor_black.ico" />
     <title>Vexor - Dashboard</title>
 </head>
@@ -47,7 +33,6 @@ $stats = $conn->query($statsSql)->fetch_assoc();
             <a href="index.html"><img src="images/vexor_logo/vexor_black.svg" id="nav-logo" alt="Vexor Logo"></a>
         </div>
         
-        <!-- Hamburger Menu -->
         <div class="hamburger" id="hamburger">
             <span></span>
             <span></span>

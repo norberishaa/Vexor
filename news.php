@@ -1,9 +1,11 @@
 <?php
 require_once "config/auth_check.php";
 require_once "config/db.php";
+require_once "classes/News.php";
 
-$sql = "SELECT news_title, news_description, author, date_posted, article_url FROM news ORDER BY date_posted DESC";
-$result = $conn->query($sql);
+$news = new News($conn);
+
+$result = $news->getAll();
 ?>
 
 <!DOCTYPE html>
