@@ -41,6 +41,7 @@ observer.observe(navLinks, {
     attributes: true
 });
 
+// -------------------------------------- CVE TABLE --------------------------------------
 
 document.querySelectorAll('.cve-table tbody tr').forEach(row => {
     row.addEventListener('click', () => {

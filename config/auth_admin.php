@@ -1,9 +1,13 @@
 <?php
 session_start();
 
-// Check if user is logged in
 if (!isset($_SESSION['user_id']) || !isset($_SESSION['email'])) {
-    // User is not logged in  redirect to login page
     header("Location: log-in.php?error=unauthorized");
     exit();
 }
+
+if (!isset($_SESSION['admin']) || $_SESSION['admin'] !== 'yes') {
+    header("Location: index.html");
+    exit();
+}
+?>

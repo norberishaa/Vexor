@@ -49,10 +49,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             INSERT INTO users (emri, mbiemri, email, password, admin)
             VALUES (?, ?, ?, ?, 'no')
         ");
-        $stmt->bind_param("ssss", $name, $last_name, $email, $hashed_password);  // MySQLi binding
+        $stmt->bind_param("ssss", $name, $last_name, $email, $hashed_password);
         
         if ($stmt->execute()) {
-            // Auto-login
             $_SESSION['user_id'] = $conn->insert_id;
             $_SESSION['email'] = $email;
             $_SESSION['name'] = $name;
@@ -92,7 +91,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <div class="nav-links" id="navLinks">
             <a href="index.html">Home</a>
             <a href="dashboard.php">Dashboard</a>
-            <a href="news.html">News</a>
+            <a href="news.php">News</a>
             <a href="contact.html">Contact</a>
             <button class="log-in" onclick="location.href='log-in.php'">Log In</button>
         </div>

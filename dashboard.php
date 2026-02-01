@@ -56,10 +56,10 @@ $stats = $conn->query($statsSql)->fetch_assoc();
         
         <div class="nav-links" id="navLinks">
             <a href="index.html">Home</a>
-            <a href="dashboard.html">Dashboard</a>
-            <a href="news.html">News</a>
+            <a href="dashboard.php">Dashboard</a>
+            <a href="news.php">News</a>
             <a href="contact.html">Contact</a>
-            <button class="log-in" onclick="location.href='log-in.html'">Log In</button>
+            <button class="log-in" onclick="location.href='log-in.php'">Log In</button>
         </div>
     </nav>
     

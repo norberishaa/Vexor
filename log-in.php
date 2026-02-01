@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if ($email === '' || $password === '') {
         $error = "Please enter all fields";
     } else {
-        $stmt = $conn->prepare("SELECT user_id, emri, email, password FROM users WHERE email = ? LIMIT 1"); 
+        $stmt = $conn->prepare("SELECT user_id, emri, email, password, admin FROM users WHERE email = ? LIMIT 1"); 
         $stmt->bind_param('s', $email);
         $stmt->execute();
         
@@ -28,17 +28,22 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         
         if ($result->num_rows === 1) {
             $user = $result->fetch_assoc();
-            
+
             // Verify password
             if (password_verify($password, $user['password'])) {
                 // SUCCESS - Login user
                 $_SESSION['user_id'] = $user['user_id'];
                 $_SESSION['email'] = $user['email'];
                 $_SESSION['name'] = $user['emri'];
-                $_SESSION['last_activity'] = time();
+                $_SESSION['admin'] = $user['admin'];
                 
                 // Redirect to dashboard
-                header("Location: dashboard.php");
+                if ($user['admin'] === 'yes') {
+                    header("Location: admin.php");
+                } else {
+                    header("Location: dashboard.php");
+                }
+
                 exit();
             } else {
                 // FAIL - Wrong password
@@ -76,7 +81,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <div class="nav-links" id="navLinks">
             <a href="index.html">Home</a>
             <a href="dashboard.php">Dashboard</a>
-            <a href="news.html">News</a>
+            <a href="news.php">News</a>
             <a href="contact.html">Contact</a>
             <button class="log-in" onclick="location.href='log-in.php'">Log In</button>
         </div>
@@ -87,7 +92,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <h1>Log In</h1>
             
             <?php if ($error): ?>
-                <div class="error-message"><?= htmlspecialchars($error) ?></div>
+                <div class="error-message" style="color:#ff9b9b"><?= htmlspecialchars($error) ?></div>
             <?php endif; ?>
             
             <?php if ($success): ?>

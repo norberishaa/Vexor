@@ -1,4 +1,5 @@
 <?php
+require_once "config/auth_check.php";
 require_once "config/db.php";
 
 $sql = "SELECT news_title, news_description, author, date_posted, article_url FROM news ORDER BY date_posted DESC";
@@ -30,10 +31,10 @@ $result = $conn->query($sql);
             
             <div class="nav-links" id="navLinks">
                 <a href="index.html">Home</a>
-                <a href="dashboard.html">Dashboard</a>
-                <a href="news.html">News</a>
+                <a href="dashboard.php">Dashboard</a>
+                <a href="news.php">News</a>
                 <a href="contact.html">Contact</a>
-                <button class="log-in" onclick="location.href='log-in.html'">Log In</button>
+                <button class="log-in" onclick="location.href='log-in.php'">Log In</button>
             </div>
         </nav>
 
