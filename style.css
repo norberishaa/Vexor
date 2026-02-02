@@ -1017,9 +1017,20 @@ body {
 
 /* Tablet */
 @media screen and (max-width: 1300px) {
+	html, body {
+    	max-width: 100%;
+    	overflow-x: hidden;
+    	position: relative; /* Helps contain absolute elements */
+	}
+
+    :root {
+        --nav-height: 100px;
+    }
+
     .nav-bar {
 		padding: 0 20px;
         justify-content: space-between;
+        height: var(--nav-height);
 	}
 
 	.nav-bar .nav-logo-container {
@@ -1058,13 +1069,58 @@ body {
 		margin: 10px auto;
 	}
 
+    /* Home Landing */
+    .home-landing .home-landing-main {
+        width: 85%;
+        flex-direction: column;
+        gap: 30px;
+        padding: 20px 0;
+    }
+
+    .home-landing .home-landing-main .main-left {
+        width: 80%;
+        align-items: center;
+    }
+
+    .home-landing .home-landing-main .main-left #vexor-white {
+        width: 250px;
+    }
+
+    .home-landing .home-landing-main .main-left p {
+        width: 90%;
+        font-size: 1.1rem;
+        text-align: center;
+    }
+
+    .home-landing .home-landing-main .main-left #discover-more {
+        width: 45%;
+        height: 45px;
+        font-size: 1.3rem;
+    }
+
+    .home-landing .home-landing-main .main-right {
+        width: 300px;
+        height: 300px;
+    }
+
+    .home-landing .home-landing-partners {
+        height: auto;
+        flex-wrap: wrap;
+        padding: 15px 10px;
+        gap: 10px;
+    }
+
     .home-landing .home-landing-partners img{
         width: 60px;
         height: 60px;
     }
 
+    /* About Us & Statistics */
     .home-about-us, .home-statistics{
         background-size: 100px 100px;
+        height: auto;
+        min-height: calc(100vh - var(--nav-height));
+        padding: 40px 0;
     }
 
     .home-about-us .about-us-container,
@@ -1077,8 +1133,18 @@ body {
         font-size: 3rem;
     }
 
+    .home-about-us .about-us-container .cards-container,
+    .home-statistics .statistics-container .stat-container {
+        flex-direction: column;
+        gap: 20px;
+        width: 100%;
+    }
+
     .home-about-us .about-us-container .cards-container .card,
     .home-statistics .statistics-container .stat-container .stat{
+        width: 100%;
+        height: auto;
+        min-height: 250px;
         gap: 0;
         align-items: center;
         justify-content: flex-start;
@@ -1095,5 +1161,330 @@ body {
     .home-statistics .statistics-container .stat-container .stat .stat-content{
         padding: 20px;
         line-height: 130%;
+        font-size: 1.1rem;
+    }
+
+    .home-about-us .corner-globe {
+        width: 50%;
+        right: -10%;
+    }
+
+    /* Dashboard */
+    .dashboard {
+        gap: 3%;
+    }
+
+    .dashboard .dashboard-overview {
+        width: 95%;
+        flex-wrap: wrap;
+        height: auto;
+        gap: 15px;
+        padding: 20px 10px;
+        justify-content: center;
+    }
+
+    .dashboard .dashboard-overview .dashboard-overview-item {
+        width: 30%;
+        min-width: 200px;
+        height: 100px;
+        padding: 10px;
+    }
+
+    .dashboard .dashboard-overview .dashboard-overview-item .overview-item-title {
+        font-size: 1rem;
+        text-align: center;
+    }
+
+    .dashboard .dashboard-overview .dashboard-overview-item .overview-item-content {
+        font-size: 2rem;
+    }
+
+    .dashboard .dashboard-cve-container {
+        height: 75%;
+    }
+
+    .dashboard .dashboard-cve-container .cve-table-container {
+        width: 100%;
+    }
+
+    .dashboard .dashboard-cve-container .cve-table-container .table-head {
+        height: 100px;
+        padding-left: 3%;
+    }
+
+    .dashboard .dashboard-cve-container .cve-table-container .table-head h1 {
+        font-size: 2rem;
+    }
+
+    .dashboard .dashboard-cve-container .cve-table-container .table-head input {
+        width: 50%;
+        height: 35px;
+        font-size: 1rem;
+    }
+
+    .dashboard .dashboard-cve-container .cve-table-container .cve-table th {
+        font-size: 1rem;
+        top: 100px;
+        height: 45px;
+    }
+
+    .dashboard .dashboard-cve-container .cve-table-container .cve-table td {
+        font-size: 0.95rem;
+    }
+
+    /* Contact */
+    .contact-main .contact-us {
+        width: 60%;
+    }
+
+    .contact-main .reach-us {
+        width: 60%;
+    }
+
+    /* Login & Sign Up */
+    .log-in-section .log-in-container,
+    .sign-up-section .sign-up-container {
+        width: 60%;
+    }
+
+    /* News */
+    .news .news-container .news-item-container {
+        width: 40%;
+        height: auto;
+        min-height: 200px;
+    }
+
+    /* CVE Description Modal */
+    .cve-description-container {
+        width: 60%;
+        height: 60%;
+        padding: 40px;
+    }
+
+    .cve-description-container h1 {
+        font-size: 2.5rem;
+    }
+}
+
+/* Mobile */
+@media screen and (max-width: 768px) {
+    :root {
+        --nav-height: 80px;
+    }
+
+    .nav-bar {
+        height: var(--nav-height);
+    }
+
+    .nav-bar .nav-logo-container #nav-logo {
+        max-width: 100px;
+    }
+
+    /* Home Landing */
+    .home-landing .home-landing-main {
+        width: 90%;
+    }
+
+    .home-landing .home-landing-main .main-left {
+        width: 100%;
+    }
+
+    .home-landing .home-landing-main .main-left #vexor-white {
+        width: 200px;
+    }
+
+    .home-landing .home-landing-main .main-left p {
+        width: 95%;
+        font-size: 1rem;
+    }
+
+    .home-landing .home-landing-main .main-left #discover-more {
+        width: 60%;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+
+    .home-landing .home-landing-main .main-right {
+        width: 250px;
+        height: 250px;
+    }
+
+    .home-landing .home-landing-partners img {
+        width: 45px;
+        height: 45px;
+    }
+
+    /* About Us & Statistics */
+    .home-about-us .about-us-container,
+    .home-statistics .statistics-container {
+        width: 95%;
+    }
+
+    .home-about-us .about-us-container .about-us-title,
+    .home-statistics .statistics-container .statistics-title {
+        font-size: 2rem;
+    }
+
+    .home-about-us .about-us-container .cards-container .card .card-title,
+    .home-statistics .statistics-container .stat-container .stat .stat-title {
+        font-size: 1.5rem;
+    }
+
+    .home-about-us .about-us-container .cards-container .card .card-content,
+    .home-statistics .statistics-container .stat-container .stat .stat-content {
+        padding: 15px;
+        font-size: 1rem;
+    }
+
+    .home-about-us .corner-globe {
+        width: 70%;
+        right: -20%;
+    }
+
+    .home-about-us .gotoBottom,
+    .home-statistics .gotoTop {
+        width: 40px;
+        height: 40px;
+        font-size: 1.5rem;
+    }
+
+    /* Dashboard */
+    .dashboard {
+        gap: 2%;
+    }
+
+    .dashboard .dashboard-overview {
+        width: 100%;
+        align-items: stretch;
+        padding: 15px;
+        gap: 10px;
+    }
+
+    .dashboard .dashboard-overview .dashboard-overview-item {
+        width: 40%;
+        min-width: unset;
+        height: 80px;
+        padding: 10px 15px;
+		align-items: center;
+	}
+
+    .dashboard .dashboard-overview .dashboard-overview-item .overview-item-title {
+        font-size: 0.95rem;
+    }
+
+    .dashboard .dashboard-overview .dashboard-overview-item .overview-item-content {
+        font-size: 2rem;
+    }
+
+    .dashboard .dashboard-cve-container {
+        height: 75%;
+        width: 100%;
+    }
+
+    .dashboard .dashboard-cve-container .cve-table-container {
+        width: 98%;
+        border-radius: 15px;
+    }
+
+    .dashboard .dashboard-cve-container .cve-table-container .table-head {
+        height: 110px;
+        padding-left: 4%;
+        padding-right: 4%;
+    }
+
+    .dashboard .dashboard-cve-container .cve-table-container .table-head h1 {
+        font-size: 1.8rem;
+    }
+
+    .dashboard .dashboard-cve-container .cve-table-container .table-head input {
+        width: 75%;
+        height: 35px;
+        font-size: 0.95rem;
+    }
+
+    .dashboard .dashboard-cve-container .cve-table-container .cve-table {
+        font-size: 0.85rem;
+    }
+
+    .dashboard .dashboard-cve-container .cve-table-container .cve-table th {
+        font-size: 0.9rem;
+        top: 110px;
+        height: 40px;
+        padding-left: 8px;
+    }
+
+    .dashboard .dashboard-cve-container .cve-table-container .cve-table td {
+        font-size: 0.85rem;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+	.dashboard .dashboard-cve-container .cve-table-container .cve-table th:nth-last-child(-n+3),
+    .dashboard .dashboard-cve-container .cve-table-container .cve-table td:nth-last-child(-n+3) {
+        display: none;
+    }
+
+    .dashboard .dashboard-cve-container .cve-table-container .cve-table tr {
+        height: 35px;
+    }
+
+    /* Contact */
+    .contact-main .contact-us {
+        width: 85%;
+    }
+
+    .contact-main .contact-us .send {
+        width: 40%;
+    }
+
+    .contact-main .reach-us {
+        width: 80%;
+    }
+
+    /* Login & Sign Up */
+    .log-in-section .log-in-container {
+        width: 85%;
+        height: 60%;
+        padding: 30px 30px 0px 30px;
+    }
+
+    .log-in-section .log-in-container h1 {
+        font-size: 2.5rem;
+    }
+
+    .sign-up-section .sign-up-container {
+        width: 85%;
+        height: 70%;
+        padding: 30px 30px 0px 30px;
+    }
+
+    .sign-up-section .sign-up-container h1 {
+        font-size: 2.5rem;
+    }
+
+    /* News */
+    .news .news-container .news-item-container {
+        width: 85%;
+        min-height: 180px;
+    }
+
+    .news .news-container .news-item-container .titulli {
+        font-size: 1.5rem;
+    }
+
+    /* CVE Description Modal */
+    .cve-description-container {
+        width: 85%;
+        height: 70%;
+        padding: 25px;
+    }
+
+    .cve-description-container h1 {
+        font-size: 2rem;
+        margin-bottom: 15px;
+    }
+
+    .cve-description-container p {
+        font-size: 1rem;
     }
 }
