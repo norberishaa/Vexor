@@ -1,105 +1,109 @@
 :root {
-	--header-height: 50px;
+    --header-height: 50px;
 }
 
 ::selection {
-	background-color: whitesmoke;
-	color: #0B0F19;
+    background-color: whitesmoke;
+    color: #0B0F19;
 }
 
 html {
-	scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 
 html::-webkit-scrollbar {
-	display: none;
+    display: none;
 }
 
 body {
-	padding: 0;
-	margin: 0;
-    background-color: #0B0F19;
-    background-size: 150px 150px;
-	background-image: linear-gradient(to right, #1F2937 1px, transparent 1px), linear-gradient(to bottom, #1F2937 1px, transparent 1px);
+    margin: 0;
+    padding: 0;
     display: flex;
     font-family: 'PPTelegraf', Arial, sans-serif;
+
+    background-color: #0B0F19;
+    background-size: 150px 150px;
+    background-image:
+        linear-gradient(to right, #1F2937 1px, transparent 1px),
+        linear-gradient(to bottom, #1F2937 1px, transparent 1px);
 }
 
-.admin-header{
+.admin-header {
     display: flex;
-    width: 20%;
-    height: 100vh;
     flex-direction: column;
-    background-color: #151B2B;
     justify-content: space-between;
     align-items: center;
     gap: 10px;
+
+    width: 20%;
+    height: 100vh;
+    background-color: #151B2B;
     border-right: 1px solid #1F2937;
 }
 
-.admin-header .admin-header-top{
+.admin-header-top {
     display: flex;
     justify-content: center;
-    border-bottom: 1px solid #1F2937;
     width: 100%;
     height: 10%;
+    border-bottom: 1px solid #1F2937;
 }
 
-.admin-header .admin-header-top img{
+.admin-header-top img {
     width: 50%;
 }
 
-.admin-header .admin-header-tabs{
+.admin-header-tabs {
     display: flex;
     flex-direction: column;
-    width: 100%;
     align-items: center;
     gap: 10px;
+    width: 100%;
 }
 
-.admin-header .admin-header-tabs .admin-tab{
+.admin-tab {
     width: 75%;
     height: 50px;
+
     border: none;
     border-radius: 10px;
     background: none;
+
     color: whitesmoke;
     font-size: 1.1rem;
 }
 
-.admin-header .admin-header-tabs .admin-tab.active{
+.admin-tab:hover,
+.admin-tab.active {
     background-color: #17223F;
     color: #608cf3;
-    border: #608cf3 1px solid;
-}
-
-.admin-header .admin-header-tabs .admin-tab:hover{
-    background-color: #17223F;
-    color: #608cf3;
-    border: #608cf3 1px solid;
+    border: 1px solid #608cf3;
     cursor: pointer;
 }
 
-.admin-header .admin-header-bottom{
-    border-top: 1px solid #1F2937;
+.admin-header-bottom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     width: 100%;
     height: 5%;
     font-size: 1.5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    border-top: 1px solid #1F2937;
 }
 
-.admin-header .admin-header-bottom a{
-    color: #1F2937;
-    border-radius: 10px;
-    height: 70%;
-    width: 90%;
-    text-decoration: none;
-    background-color: whitesmoke;
+.admin-header-bottom a {
     display: flex;
     align-items: center;
     justify-content: center;
+
+    width: 90%;
+    height: 70%;
+    border-radius: 10px;
+
+    text-decoration: none;
+    background-color: whitesmoke;
+    color: #1F2937;
 }
 
 .tab-content {
@@ -111,104 +115,312 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    height: 100vh;
+
     width: 100%;
+    height: 100vh;
 }
 
-.tab-content .admin-home,
-.tab-content .admin-users{
+.admin-home,
+.admin-users,
+.admin-cve,
+.admin-news{
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    width: 100%;
-    height: 50%; 
     justify-content: flex-start;
+    align-items: flex-start;
     gap: 50px;
+    width: 100%;
+    height: 100%;
 }
 
-.tab-content .admin-home .admin-home-text,
-.tab-content .admin-users .admin-users-text{
-    width:100%;
-    padding-left: 50px;
-    padding-top: 50px;
+.admin-home-text,
+.admin-users-text,
+.admin-cves-text,
+.admin-news-text {
+    width: 100%;
+    padding: 50px 0 0 50px;
     color: white;
 }
 
-.tab-content .admin-home .admin-home-text h1,
-.tab-content .admin-users .admin-users-text h1{
+.admin-home-text h1,
+.admin-users-text h1,
+.admin-cves-text h1,
+.admin-news-text h1{
+    margin: 0;
     font-size: 3rem;
     font-weight: 600;
-    margin: 0;
 }
 
-.tab-content .admin-home .admin-home-text .warning{
-    background-color: rgba(249, 115, 22, .1);
-    border: rgba(249, 115, 22, 1) 1px solid;
-    border-radius: 15px;
-    letter-spacing: 1px;
-    padding: 10px;
-    width: 50%;
-    height: 30%;
-    color: #D07A35;
+.admin-home-text p {
+    margin-top: 10px;
+    font-weight: 100;
+}
+
+.admin-users-text p,
+.admin-cves-text p,
+.admin-news-text p {
+    font-size: 1.4rem;
+    font-weight: 100;
+}
+
+.warning {
     display: flex;
     flex-direction: column;
     justify-content: center;
+
+    width: 40%;
+    height: 40%;
+    padding: 10px;
+
+    background-color: rgba(249, 115, 22, 0.1);
+    border: 1px solid rgba(249, 115, 22, 1);
+    border-radius: 15px;
+
+    color: #D07A35;
+    letter-spacing: 1px;
 }
 
-.tab-content .admin-home .admin-home-text p{
-    font-weight: 100;
-    margin: 0;
-    margin-top: 10px;
-}
-
-.tab-content .admin-home .admin-home-cards,
-.admin-users-content {
-    color: white;
-    width: 100%;
-    height: 30%;
+.admin-home-cards {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-evenly;
+    gap: 20px;
+
+    width: 100%;
+    color: white;
 }
 
-.tab-content .admin-home .admin-home-cards .card{
-    background-color: #151B2B;
-    width: 20%;
+/* UNIFIED CONTENT STYLING FOR ALL TABS */
+.admin-users-content,
+.admin-cves-content,
+.admin-news-content {
     display: flex;
-    border-radius: 20px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 20px;
+
+    width: 100%;
+    height: 60%;
+    max-height: 60%;
+    overflow-y: auto;
+    align-items: flex-start;
+    color: white;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    border: 1px solid #1F2937;
     gap: 5px;
+
+    width: 200px;
+    height: 100px;
+
+    background-color: #151B2B;
+    border: 1px solid #1F2937;
+    border-radius: 20px;
 }
 
-.tab-content .admin-home .admin-home-cards .card p{
-    font-size: 3rem;
+.card p {
     margin: 0;
+    font-size: 3rem;
 }
 
-.tab-content .admin-home .admin-home-cards .card .date{
+.card .date {
     font-size: 2rem;
 }
 
-.admin-table{
+.admin-table {
+    width: 90%;
     background-color: white;
     color: black;
-    width: 90%;
     border-radius: 25px;
-    padding: 5px;
+    border-collapse: collapse;
+    table-layout: fixed;
 }
 
-.admin-table thead tr th{
+.admin-table thead th {
+    height: 60px;
     text-align: center;
+    border-bottom: 1px solid black;
 }
 
-.admin-table tbody tr td{
+.admin-table tbody td {
+    height: 30px;
+    line-height: 30px;
+    padding: 0;
     text-align: center;
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border-bottom: 1px solid black;
 }
 
-.admin-table tbody tr .actions a{
+.admin-table .actions a,
+.admin-table .actions button {
     text-decoration: none;
     color: black;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
 }
 
+.admin-table .actions button:hover {
+    text-decoration: underline;
+}
+
+/* Badge Styling */
+.badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.badge-success {
+    background-color: #4caf50;
+    color: white;
+}
+
+.badge-default {
+    background-color: #9e9e9e;
+    color: white;
+}
+
+/* Edit User Modal */
+.edit-user-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.edit-user-modal.active {
+    display: flex;
+}
+
+.edit-user-modal .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 25px 10px 25px;
+    background: #fff;
+    border-radius: 8px 8px 0 0;
+    width: 400px;
+    max-width: 90%;
+}
+
+.edit-user-modal .top-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+}
+
+.edit-user-modal #close-user-modal {
+    cursor: pointer;
+    font-size: 20px;
+    color: #999;
+    transition: color 0.2s;
+}
+
+.edit-user-modal #close-user-modal:hover {
+    color: #333;
+}
+
+.edit-user-form {
+    padding: 10px 25px 25px 25px;
+    background: #fff;
+    border-radius: 0 0 8px 8px;
+    width: 400px;
+    max-width: 90%;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #444;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 2px 12px;
+    line-height: 40px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+    transition: border-color 0.2s;
+    font-family: 'PPTelegraf', Arial, sans-serif;
+}
+
+.form-group select{
+    height: 35px;
+}
+
+.form-group textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #333;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.form-actions button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* Cancel/Delete button */
+.form-actions button:first-child,
+.btn-delete-modal {
+    background: #f44336;
+    color: #fff;
+}
+
+.form-actions button:first-child:hover,
+.btn-delete-modal:hover {
+    background: #d32f2f;
+}
+
+/* Save button */
+.form-actions button:last-child {
+    background: #333;
+    color: #fff;
+}
+
+.form-actions button:last-child:hover {
+    background: #555;
+}

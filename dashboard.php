@@ -75,7 +75,7 @@ if (isset($_GET['cve'])) {
             <div class="cve-table-container">
                 <div class="table-head">
                     <h1>CVE Tracking Overview</h1>
-                    <input type="text" placeholder="Search..">
+                    <input type="text" id="cveSearch" placeholder="Search..">
                 </div>
                 <table class="cve-table">
                     <thead>

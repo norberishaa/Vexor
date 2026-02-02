@@ -59,3 +59,30 @@ if (wrapper) {
     const container = wrapper.querySelector('.cve-description-container');
     container.addEventListener('click', e => e.stopPropagation());
 }
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.getElementById('cveSearch');
+    
+    if (searchInput) {
+        searchInput.addEventListener('keyup', function() {
+            let filter = this.value.toLowerCase();
+            let rows = document.querySelectorAll('.cve-table tbody tr');
+
+            rows.forEach(row => {
+                if (row.cells.length > 1) {
+                    let cveId = row.cells[0].textContent.toLowerCase();
+                    let name = row.cells[1].textContent.toLowerCase();
+
+                    if (cveId.includes(filter) || name.includes(filter)) {
+                        row.style.display = "table-row"; 
+                    } else {
+                        row.style.display = "none";
+                    }
+                }
+            });
+        });
+    } else {
+        console.error("Search input with ID 'cveSearch' not found!");
+    }
+});

@@ -1,7 +1,6 @@
 <?php
 
-class News
-{
+class News{
     private mysqli $connection;
 
     public function __construct(mysqli $connection)
@@ -41,8 +40,7 @@ class News
         return $stmt->execute();
     }
 
-    public function delete(int $id): bool
-    {
+    public function delete(int $id): bool{
         $stmt = $this->connection->prepare(
             "DELETE FROM news WHERE news_id = ?"
         );

@@ -19,7 +19,7 @@ class User{
 
     public function getAll(){
         return $this->connection->query(
-            "SELECT user_id, emri, mbiemri, email, data_e_krijimit, admin  FROM users ORDER BY data_e_krijimit DESC"
+            "SELECT user_id, emri, mbiemri, email, data_e_krijimit, admin  FROM users ORDER BY data_e_krijimit ASC"
         );
     }
 

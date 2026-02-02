@@ -3,7 +3,6 @@
 class CVE{
     private mysqli $connection;
     
-    
     public function __construct(mysqli $connection){
         $this->connection = $connection;
     }
@@ -34,7 +33,7 @@ class CVE{
         ";
 
         $stmt = $this->connection->prepare($sql);
-        $stmt->bind_param('ssdss s', $name, $status, $severity, $dateReported, $description, $cveId);
+        $stmt->bind_param('ssdsss', $name, $status, $severity, $dateReported, $description, $cveId);
 
         return $stmt->execute();
     }
